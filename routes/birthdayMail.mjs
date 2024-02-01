@@ -7,9 +7,7 @@ dotenv.config();
 
 const router = express.Router();
 
-sgMail.setApiKey(
-  "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"
-);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 schedule.scheduleJob("0 10 * * *", async () => {
   // schedule.scheduleJob("*/10 * * * * *", async () => {

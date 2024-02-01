@@ -2,9 +2,7 @@ import express from "express";
 import customerKyc from "../models/customerKycModel.mjs";
 import sgMail from "@sendgrid/mail";
 
-sgMail.setApiKey(
-  "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"
-);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const router = express.Router();
 
@@ -122,10 +120,10 @@ router.post("/api/addCustomerKyc", async (req, res) => {
     await newKyc.save();
 
     const emailContent = {
-      to: ["sameery.020@gmail.com", "sameery.020@gmail.com"],
+      to: ["manu@surajforwarders.com", "sreekumar@surajforwarders.com"],
       from: "helpdesk@alluvium.in",
-      subject: "KYC details added",
-      text: "KYC details added",
+      subject: "Customer KYC details added",
+      text: `${name_of_individual} has filled up Customer KYC form.`,
     };
 
     await sgMail.send(emailContent);

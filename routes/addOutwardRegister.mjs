@@ -1,5 +1,8 @@
 import express from "express";
 import outwardRegister from "../models/outwardRegisterModel.mjs";
+import sgMail from "@sendgrid/mail";
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const router = express.Router();
 
@@ -19,6 +22,15 @@ router.post("/api/addOutwardRegister", async (req, res) => {
     res.status(201).json({
       message: "Outward register added successfully",
     });
+
+    const emailContent = {
+      to: party_email,
+      from: "helpdesk@alluvium.in",
+      subject: "Customer KYC details added",
+      text: "",
+    };
+
+    await sgMail.send(emailContent);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
