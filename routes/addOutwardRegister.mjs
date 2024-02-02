@@ -10,19 +10,13 @@ const router = express.Router();
 
 router.post("/api/addOutwardRegister", async (req, res) => {
   try {
-    const { bill_given_date, party, division, courier_details, party_email } =
-      req.body;
+    const { bill_given_date, party, division, party_email } = req.body;
 
     const newOutwardEntry = await outwardRegister.create({
       bill_given_date,
       party,
       division,
-      courier_details,
       party_email,
-    });
-
-    res.status(201).json({
-      message: "Outward register added successfully",
     });
 
     const emailContent = {
@@ -33,6 +27,10 @@ router.post("/api/addOutwardRegister", async (req, res) => {
     };
 
     await sgMail.send(emailContent);
+
+    res.status(201).json({
+      message: "Outward register added successfully",
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");

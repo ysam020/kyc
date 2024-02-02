@@ -43,7 +43,6 @@ router.post("/api/login", async (req, res) => {
 
     bcrypt.compare(password, user.password, (passwordErr, passwordResult) => {
       if (passwordErr) {
-        console.error(passwordErr);
         return res.json({ message: "Something went wrong" });
       }
 

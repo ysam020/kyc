@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.post("/kyc", async (req, res) => {
   const { employee_id } = req.body;
-  console.log(employee_id);
 
   try {
     // Check if the employee_id already exists

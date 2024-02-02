@@ -9,6 +9,7 @@ router.get("/api/employee_details/:employeeId", async (req, res) => {
 
     // Use await to wait for the query to execute and retrieve the user
     const user = await kyc.findOne({ employee_id: employeeId });
+    console.log(user);
 
     // Send the user data as a response
     res.status(200).send(user);

@@ -5,12 +5,15 @@ const router = express.Router();
 
 router.post("/api/updateOutwardRegister/:_id", async (req, res) => {
   const { _id } = req.params;
-  const { weight, docket_no, outward_consignment_photo } = req.body;
+  const { weight, docket_no, outward_consignment_photo, courier_details } =
+    req.body;
 
   try {
     await outwardRegister.updateOne(
       { _id },
-      { $set: { weight, docket_no, outward_consignment_photo } }
+      {
+        $set: { weight, docket_no, outward_consignment_photo, courier_details },
+      }
     );
 
     res.status(200).json({ message: "Outward register updated successfully" });
