@@ -9,6 +9,8 @@ const outwardRegisterSchema = new mongoose.Schema({
   docket_no: { type: String },
   outward_consignment_photo: { type: String },
   party_email: { type: String },
+  description: { type: String },
+  kind_attention: { type: String },
 });
 
 const outwardRegister = mongoose.model(

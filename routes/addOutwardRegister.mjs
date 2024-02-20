@@ -10,17 +10,31 @@ const router = express.Router();
 
 router.post("/api/addOutwardRegister", async (req, res) => {
   try {
-    const { bill_given_date, party, division, party_email } = req.body;
+    const {
+      bill_given_date,
+      party,
+      division,
+      party_email,
+      description,
+      kind_attention,
+    } = req.body;
 
     const newOutwardEntry = await outwardRegister.create({
       bill_given_date,
       party,
       division,
       party_email,
+      description,
+      kind_attention,
     });
 
     const emailContent = {
-      to: party_email,
+      to: [
+        party_email,
+        "manu@surajforwarders.com",
+        "rajan@surajforwarders.com",
+        "account@surajforwarders.com",
+      ],
       from: "helpdesk@alluvium.in",
       subject: "Customer KYC details added",
       text: "",

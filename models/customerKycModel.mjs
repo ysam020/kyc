@@ -29,6 +29,7 @@ const customerKycSchema = new mongoose.Schema({
   principle_business_telephone: String,
   principle_business_website: String,
   authorised_signatories: [{ type: String }],
+  authorisation_letter: [{ type: String }],
   iec_no: String,
   pan_no: String,
   banks: [

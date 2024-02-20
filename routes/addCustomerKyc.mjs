@@ -30,6 +30,7 @@ router.post("/api/addCustomerKyc", async (req, res) => {
     principle_business_telephone,
     principle_business_website,
     authorised_signatories,
+    authorisation_letter,
     iec_no,
     pan_no,
     banks,
