@@ -2,8 +2,8 @@ import express from "express";
 import schedule from "node-schedule";
 import sgMail from "@sendgrid/mail";
 import dotenv from "dotenv";
-import kyc from "../models/kycModel.mjs";
 dotenv.config();
+import kyc from "../models/kycModel.mjs";
 
 const router = express.Router();
 

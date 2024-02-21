@@ -24,6 +24,7 @@ import changePassword from "./routes/changePassword.mjs";
 import getContactPersonNames from "./routes/getContactPersonNames.mjs";
 import getOutwardRegisterDetails from "./routes/getOutwardRegisterDetails.mjs";
 import updateOutwardRegister from "./routes/updateOutwardRegister.mjs";
+import feedback from "./routes/feedback.mjs";
 
 dotenv.config();
 const app = express();
@@ -64,6 +65,7 @@ mongoose
     app.use(getContactPersonNames);
     app.use(getOutwardRegisterDetails);
     app.use(updateOutwardRegister);
+    app.use(feedback);
 
     app.listen(4000, () => {
       console.log(`BE started at port 4000`);
